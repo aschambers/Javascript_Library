@@ -1,0 +1,64 @@
+<html>
+<head>
+	<title></title>
+</head>
+<script type="text/javascript">
+var _ = {
+   map: function(arr, callback) {   
+   		list = []; 
+   		for(var i = 0; i < arr.length; i++) {
+   			if(callback(arr[i])){
+   				list.push(arr[i]*3);
+   			}
+   		}
+   		return list;
+   },
+   reduce: function(arr,callback,memo=0) { 
+   		var sum = 0;
+   		for(var i=0; i < arr.length; i++){
+   			sum += callback(arr[i])
+   		}
+   		return sum;
+   },
+   find: function(arr,callback) {  
+   		for(var i = 0; i < arr.length; i++) {
+   			if(callback(arr[i])) {
+   				return arr[i];
+   			}
+   		}
+   },
+   filter: function(arr,callback) { 
+   		list = [];
+   		for(var i = 0; i < arr.length; i++) {
+   			if(callback(arr[i])) {
+   				list.push(arr[i]);
+   			}
+   		}
+   		return list;
+   },
+   reject: function(arr,callback) { 
+   		list = [];
+   		for(var i = 0; i < arr.length; i++) {
+   			if(!callback(arr[i])) {
+   				list.push(arr[i]);
+   			}
+   		}
+   		return list;
+   }
+ }
+// you just created a library with 5 methods!
+var evens = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; }); 
+console.log(evens);//should return [2, 4, 6] after you finish implementing the code above
+var rejected = _.reject([1,2,3,4,5,6], function(num){ return num % 2 == 0; });
+console.log(rejected);
+var finder = _.find([1,2,3,4,5,6], function(num){ return num % 2 == 0; });
+console.log(finder);
+var reduced = _.reduce([1,2,3,4,5,6], function(num){ return num; });
+console.log(reduced);
+var mapped = _.map([1,2,3,4,5,6], function(num){return num; });
+console.log(mapped);
+</script>
+<body>
+
+</body>
+</html>
